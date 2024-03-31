@@ -1,0 +1,46 @@
+film_database = {
+    "Action": {"Mission Impossible": 40000, "Fast & Furious": 50000, "John Wick": 45000},
+    "Comedy": {"The Hangover": 45000, "Superbad": 50000, "Deadpool": 45000},
+    "Drama": {"The Shawshank Redemption": 50000, "Forrest Gump": 40000, "The Godfather": 50000}
+}
+
+print("Daftar Genre:")
+for index, genre in enumerate(film_database.keys(), start=1):
+    print(f"{index}. {genre}")
+
+genre_choice = int(input("Pilih nomor genre film: "))
+genres = list(film_database.keys())
+if genre_choice < 1 or genre_choice > len(genres):
+    print("Pilihan genre tidak valid.")
+else:
+    selected_genre = genres[genre_choice - 1]
+    print(f"Jenis-jenis film dalam genre {selected_genre}:")
+    movies = list(film_database[selected_genre].keys())
+    for index, movie in enumerate(movies, start=1):
+        print(f"{index}. {movie}")
+
+    movie_choice = int(input("Pilih nomor film: "))
+    if movie_choice < 1 or movie_choice > len(movies):
+        print("Pilihan film tidak valid.")
+    else:
+        selected_movie = movies[movie_choice - 1]
+        quantity = int(input("Masukkan jumlah tiket: "))
+        
+        price_per_ticket = film_database[selected_genre][selected_movie]
+        total_price = price_per_ticket * quantity
+        print("Total harga:", total_price)
+
+        confirmation = input("Apakah Anda ingin membeli tiket? (y/n): ")
+        if confirmation.lower() == 'y':
+            name = input("Nama: ")
+            age = input("Usia: ")
+
+            print("Detail:")
+            print("1) Nama:", name)
+            print("2) Umur:", age)
+            print("3) Genre:", selected_genre)
+            print("4) Film:", selected_movie)
+            print("5) Jumlah Tiket:", quantity)
+            print("6) Total Harga:", total_price)
+        else:
+            print("Terima kasih!")￼Enter
